@@ -1,1 +1,0 @@
-U klasi Connection treba postaviti ispravnu putanju do baze.
