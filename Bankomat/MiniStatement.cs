@@ -1,15 +1,9 @@
 ﻿using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Bankomat
@@ -21,10 +15,10 @@ namespace Bankomat
             InitializeComponent();
         }
         SqlConnection Con = new SqlConnection(Connection.db);
-        private void populateAll()
+        private void PopulateAll()
         {
             Con.Open();
-            string query = "select * from TransactionTbl where Sender='" + Login.AccNumber + "' or Receiver='"+Login.AccNumber+"'" ;
+            string query = "select * from TransactionTbl where Sender='" + Login.AccNumber + "' or Receiver='" + Login.AccNumber + "'";
             string query1 = "select t1.Name as 'Ime posiljaoca', t1.FaName as 'Prezime primaoca', t2.Name as 'Ime primaoca', t2.FaName as 'Prezime posiljaoca', TransactionTypeTbl.Type as 'Tip transakcije', Amount as Svota,CurrencyTbl.Currency as valuta, TDate as Datum " +
                 "from TransactionTbl " +
                 "INNER JOIN AccountTbl as t1 ON (TransactionTbl.Sender=t1.AccNum) " +
@@ -39,7 +33,7 @@ namespace Bankomat
             MiniStatementdgv.DataSource = ds.Tables[0];
             Con.Close();
         }
-        private void populateType(int Ttype)
+        private void PopulateType(int Ttype)
         {
             Con.Open();
             string query = "select t1.Name as 'Ime posiljaoca', t1.FaName as 'Prezime primaoca', t2.Name as 'Ime primaoca', t2.FaName as 'Prezime posiljaoca', TransactionTypeTbl.Type as 'Tip transakcije', Amount as Svota,CurrencyTbl.Currency as valuta, TDate as Datum " +
@@ -58,43 +52,38 @@ namespace Bankomat
         }
         private void MiniStatement_Load(object sender, EventArgs e)
         {
-            populateAll();
+            PopulateAll();
         }
 
-        private void label13_Click(object sender, EventArgs e)
+        private void BackToPreviousPage_Click(object sender, EventArgs e)
         {
             Home home = new Home();
             home.Show();
             this.Close();
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void ExitApp_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void MiniStatementdgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void educationcb_SelectedIndexChanged(object sender, EventArgs e)
+        private void Educationcb_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (typecb.SelectedItem.ToString() == "Uplata")
             {
-                populateType(1);
+                PopulateType(1);
             }
-            else if(typecb.SelectedItem.ToString() == "Isplata")
+            else if (typecb.SelectedItem.ToString() == "Isplata")
             {
-                populateType(2);
+                PopulateType(2);
             }
             if (typecb.SelectedItem.ToString() == "Transfer")
             {
-                populateType(3);
+                PopulateType(3);
             }
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void PictureBox1_Click(object sender, EventArgs e)
         {
             if (MiniStatementdgv.Rows.Count > 0)
             {
@@ -168,6 +157,6 @@ namespace Bankomat
             }
         }
 
- 
+
     }
 }

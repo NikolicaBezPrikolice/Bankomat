@@ -19,7 +19,7 @@ namespace Bankomat
             InitializeComponent();
         }
         SqlConnection Con = new SqlConnection(Connection.db);
-        private void addTransaction() {
+        private void AddTransaction() {
             int TrType = 1;
             try
             {
@@ -34,7 +34,7 @@ namespace Bankomat
                 MessageBox.Show(ex.Message);
             }
         }
-        private void getcurrency()
+        private void GetCurrency()
         {
             Con.Open();
             SqlDataAdapter sda = new SqlDataAdapter("select CurrencyTbl.Currency from CurrencyTbl inner join AccountTbl on CurrencyTbl.Id=AccountTbl.Currency where AccNum='" + Login.AccNumber + "'", Con);
@@ -43,13 +43,17 @@ namespace Bankomat
             curr = dt.Rows[0][0].ToString();
             Con.Close();
         }
-        private void button1_Click(object sender, EventArgs e)
+        private void MakeDeposit_Click(object sender, EventArgs e)
         {
             printDocument1.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("receiptD", 600, 210);
            
-            if (DepoAmttb.Text=="" || Convert.ToInt32(DepoAmttb.Text) <= 0)
+            if (string.IsNullOrEmpty(DepoAmttb.Text))
             {
-                MessageBox.Show("Unesite ispravnu vrednost uloga");
+                MessageBox.Show("Unesite svotu");
+            }
+            else if(!int.TryParse(DepoAmttb.Text, out int depositAmount) || depositAmount <= 0)
+            {
+                MessageBox.Show("Unesite validnu vrednost uloga");
             }
             else
             {
@@ -66,7 +70,7 @@ namespace Bankomat
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Uspesan depozit");
                     Con.Close();
-                    addTransaction();
+                    AddTransaction();
                     Home home = new Home();
                     home.Show();
                     this.Close();
@@ -77,14 +81,14 @@ namespace Bankomat
             }
         }
 
-        private void label13_Click(object sender, EventArgs e)
+        private void BackToPreviousPage_Click(object sender, EventArgs e)
         {
             Home home = new Home();
             home.Show();
             this.Close();
         }
         int oldBalance;
-        private void getbalance()
+        private void GetBalance()
         {
             Con.Open();
             SqlDataAdapter sda = new SqlDataAdapter("select Balance from AccountTbl where AccNum='" + Login.AccNumber + "'", Con);
@@ -95,21 +99,16 @@ namespace Bankomat
         }
         private void Deposit_Load(object sender, EventArgs e)
         {
-            getbalance();
-            getcurrency();
+            GetBalance();
+            GetCurrency();
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void ExitApp_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void printPreviewDialog1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        private void PrintDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
             e.Graphics.DrawString("Bankomat", new Font("Averia", 14, FontStyle.Bold), Brushes.Red, new Point(240, 20));
             e.Graphics.DrawString("Uplate i isplate sirom Srbije", new Font("Averia", 8, FontStyle.Italic), Brushes.DarkViolet, new Point(220, 40));

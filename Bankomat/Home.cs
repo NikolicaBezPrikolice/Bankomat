@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Bankomat
@@ -17,7 +10,7 @@ namespace Bankomat
             InitializeComponent();
         }
 
-        private void label5_Click(object sender, EventArgs e)
+        private void Logout_Click(object sender, EventArgs e)
         {
             Login home = new Login();
             home.Show();
@@ -29,33 +22,33 @@ namespace Bankomat
             AccNumlbl.Text = "Broj racuna: " + Login.AccNumber;
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void Balance_Click(object sender, EventArgs e)
         {
             Balance bal = new Balance();
             bal.Show();
             this.Hide();
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void ExitApp_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Deposit_Click(object sender, EventArgs e)
         {
             Deposit depo = new Deposit();
             depo.Show();
             this.Close();
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void ChangePin_Click(object sender, EventArgs e)
         {
             ChangePin cp = new ChangePin();
             cp.Show();
             this.Close();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Withdraw_Click(object sender, EventArgs e)
         {
             Withdraw wtd = new Withdraw();
             wtd.Show();
@@ -63,23 +56,18 @@ namespace Bankomat
         }
 
 
-        private void button4_Click(object sender, EventArgs e)
+        private void MiniStatement_Click(object sender, EventArgs e)
         {
             MiniStatement ms = new MiniStatement();
             ms.Show();
             this.Close();
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void Transfer_Click(object sender, EventArgs e)
         {
             Transfer tr = new Transfer();
             tr.Show();
             this.Close();
-        }
-
-        private void AccNumlbl_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

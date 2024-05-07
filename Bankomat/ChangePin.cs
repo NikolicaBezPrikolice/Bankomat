@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Bankomat
@@ -18,7 +11,7 @@ namespace Bankomat
             InitializeComponent();
         }
         SqlConnection Con = new SqlConnection(Connection.db);
-       private void button1_Click(object sender, EventArgs e)
+        private void ChangePIN_Click(object sender, EventArgs e)
         {
             if (pin1tb.Text == "" || pin1tb.Text == "")
             {
@@ -30,7 +23,7 @@ namespace Bankomat
             }
             else
             {
-               
+
                 try
                 {
                     Con.Open();
@@ -50,14 +43,14 @@ namespace Bankomat
             }
         }
 
-        private void label13_Click(object sender, EventArgs e)
+        private void BackToPreviousPage_Click(object sender, EventArgs e)
         {
             Home home = new Home();
             home.Show();
             this.Close();
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void ExitApp_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }

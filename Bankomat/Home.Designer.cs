@@ -65,7 +65,7 @@ namespace Bankomat
             this.label2.Size = new System.Drawing.Size(35, 36);
             this.label2.TabIndex = 3;
             this.label2.Text = "X";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.label2.Click += new System.EventHandler(this.ExitApp_Click);
             // 
             // label1
             // 
@@ -88,7 +88,7 @@ namespace Bankomat
             this.button1.TabIndex = 8;
             this.button1.Text = "Uplata";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.Deposit_Click);
             // 
             // button2
             // 
@@ -100,7 +100,7 @@ namespace Bankomat
             this.button2.TabIndex = 9;
             this.button2.Text = "Isplata";
             this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.Withdraw_Click);
             // 
             // button4
             // 
@@ -112,7 +112,7 @@ namespace Bankomat
             this.button4.TabIndex = 11;
             this.button4.Text = "Transakcije";
             this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.button4.Click += new System.EventHandler(this.MiniStatement_Click);
             // 
             // button5
             // 
@@ -124,7 +124,7 @@ namespace Bankomat
             this.button5.TabIndex = 12;
             this.button5.Text = "Promeni PIN";
             this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.button5.Click += new System.EventHandler(this.ChangePin_Click);
             // 
             // button6
             // 
@@ -136,7 +136,7 @@ namespace Bankomat
             this.button6.TabIndex = 13;
             this.button6.Text = "Stanje";
             this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.button6.Click += new System.EventHandler(this.Balance_Click);
             // 
             // panel2
             // 
@@ -157,7 +157,7 @@ namespace Bankomat
             this.label5.Size = new System.Drawing.Size(79, 24);
             this.label5.TabIndex = 15;
             this.label5.Text = "Izloguj se";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
+            this.label5.Click += new System.EventHandler(this.Logout_Click);
             // 
             // AccNumlbl
             // 
@@ -169,7 +169,6 @@ namespace Bankomat
             this.AccNumlbl.Size = new System.Drawing.Size(163, 36);
             this.AccNumlbl.TabIndex = 16;
             this.AccNumlbl.Text = "Broj Racuna";
-            this.AccNumlbl.Click += new System.EventHandler(this.AccNumlbl_Click);
             // 
             // button7
             // 
@@ -181,7 +180,7 @@ namespace Bankomat
             this.button7.TabIndex = 17;
             this.button7.Text = "Transfer";
             this.button7.UseVisualStyleBackColor = false;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.button7.Click += new System.EventHandler(this.Transfer_Click);
             // 
             // Home
             // 

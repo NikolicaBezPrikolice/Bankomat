@@ -66,7 +66,7 @@ namespace Bankomat
             this.label2.Size = new System.Drawing.Size(35, 36);
             this.label2.TabIndex = 3;
             this.label2.Text = "X";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.label2.Click += new System.EventHandler(this.ExitApp_Click);
             // 
             // label1
             // 
@@ -109,7 +109,7 @@ namespace Bankomat
             this.label13.Size = new System.Drawing.Size(60, 24);
             this.label13.TabIndex = 55;
             this.label13.Text = "Nazad";
-            this.label13.Click += new System.EventHandler(this.label13_Click);
+            this.label13.Click += new System.EventHandler(this.BackToPreviousPage_Click);
             // 
             // MiniStatementdgv
             // 
@@ -119,7 +119,6 @@ namespace Bankomat
             this.MiniStatementdgv.Name = "MiniStatementdgv";
             this.MiniStatementdgv.Size = new System.Drawing.Size(649, 256);
             this.MiniStatementdgv.TabIndex = 56;
-            this.MiniStatementdgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MiniStatementdgv_CellContentClick);
             // 
             // typecb
             // 
@@ -135,7 +134,7 @@ namespace Bankomat
             this.typecb.Size = new System.Drawing.Size(176, 32);
             this.typecb.TabIndex = 57;
             this.typecb.Text = "--Odaberi--";
-            this.typecb.SelectedIndexChanged += new System.EventHandler(this.educationcb_SelectedIndexChanged);
+            this.typecb.SelectedIndexChanged += new System.EventHandler(this.Educationcb_SelectedIndexChanged);
             // 
             // pictureBox1
             // 
@@ -146,7 +145,7 @@ namespace Bankomat
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 58;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.pictureBox1.Click += new System.EventHandler(this.PictureBox1_Click);
             // 
             // MiniStatement
             // 

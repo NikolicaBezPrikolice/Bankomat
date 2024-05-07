@@ -72,7 +72,7 @@ namespace Bankomat
             this.label2.Size = new System.Drawing.Size(35, 36);
             this.label2.TabIndex = 3;
             this.label2.Text = "X";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.label2.Click += new System.EventHandler(this.ExitApp_Click);
             // 
             // label1
             // 
@@ -104,7 +104,7 @@ namespace Bankomat
             this.label13.Size = new System.Drawing.Size(60, 24);
             this.label13.TabIndex = 49;
             this.label13.Text = "Nazad";
-            this.label13.Click += new System.EventHandler(this.label13_Click);
+            this.label13.Click += new System.EventHandler(this.BackToPreviousPage_Click);
             // 
             // button1
             // 
@@ -116,7 +116,7 @@ namespace Bankomat
             this.button1.TabIndex = 48;
             this.button1.Text = "PODIGNI";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.Withdraw_Click);
             // 
             // wdamttb
             // 
@@ -125,7 +125,6 @@ namespace Bankomat
             this.wdamttb.Name = "wdamttb";
             this.wdamttb.Size = new System.Drawing.Size(176, 31);
             this.wdamttb.TabIndex = 47;
-            this.wdamttb.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label5
             // 
@@ -148,11 +147,10 @@ namespace Bankomat
             this.balancelbl.Size = new System.Drawing.Size(91, 36);
             this.balancelbl.TabIndex = 51;
             this.balancelbl.Text = "Stanje";
-            this.balancelbl.Click += new System.EventHandler(this.balancelbl_Click);
             // 
             // printDocument1
             // 
-            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.PrintDocument1_PrintPage);
             // 
             // printPreviewDialog1
             // 
@@ -175,7 +173,7 @@ namespace Bankomat
             this.button6.TabIndex = 58;
             this.button6.Text = "20000";
             this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.button6.Click += new System.EventHandler(this.Withdraw6_Click);
             // 
             // button5
             // 
@@ -187,7 +185,7 @@ namespace Bankomat
             this.button5.TabIndex = 57;
             this.button5.Text = "10000";
             this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.button5.Click += new System.EventHandler(this.Withdraw5_Click);
             // 
             // button4
             // 
@@ -199,7 +197,7 @@ namespace Bankomat
             this.button4.TabIndex = 56;
             this.button4.Text = "5000";
             this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.button4.Click += new System.EventHandler(this.Withdraw4_Click);
             // 
             // button3
             // 
@@ -211,7 +209,7 @@ namespace Bankomat
             this.button3.TabIndex = 55;
             this.button3.Text = "2000";
             this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.Click += new System.EventHandler(this.Withdraw3_Click);
             // 
             // button2
             // 
@@ -223,7 +221,7 @@ namespace Bankomat
             this.button2.TabIndex = 54;
             this.button2.Text = "1000";
             this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.Withdraw2_Click);
             // 
             // button7
             // 
@@ -235,7 +233,7 @@ namespace Bankomat
             this.button7.TabIndex = 53;
             this.button7.Text = "500";
             this.button7.UseVisualStyleBackColor = false;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.button7.Click += new System.EventHandler(this.Withdraw1_Click);
             // 
             // Withdraw
             // 

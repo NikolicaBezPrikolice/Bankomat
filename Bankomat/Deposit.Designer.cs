@@ -85,7 +85,7 @@ namespace Bankomat
             this.label2.Size = new System.Drawing.Size(35, 36);
             this.label2.TabIndex = 3;
             this.label2.Text = "X";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.label2.Click += new System.EventHandler(this.ExitApp_Click);
             // 
             // label1
             // 
@@ -108,7 +108,7 @@ namespace Bankomat
             this.label13.Size = new System.Drawing.Size(60, 24);
             this.label13.TabIndex = 43;
             this.label13.Text = "Nazad";
-            this.label13.Click += new System.EventHandler(this.label13_Click);
+            this.label13.Click += new System.EventHandler(this.BackToPreviousPage_Click);
             // 
             // button1
             // 
@@ -120,7 +120,7 @@ namespace Bankomat
             this.button1.TabIndex = 42;
             this.button1.Text = "DEPOZIT";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.MakeDeposit_Click);
             // 
             // panel2
             // 
@@ -144,7 +144,7 @@ namespace Bankomat
             // 
             // printDocument1
             // 
-            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.PrintDocument1_PrintPage);
             // 
             // printPreviewDialog1
             // 
@@ -156,7 +156,6 @@ namespace Bankomat
             this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
-            this.printPreviewDialog1.Load += new System.EventHandler(this.printPreviewDialog1_Load);
             // 
             // Deposit
             // 

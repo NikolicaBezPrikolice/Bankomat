@@ -86,7 +86,7 @@ namespace Bankomat
             this.label2.Size = new System.Drawing.Size(35, 36);
             this.label2.TabIndex = 3;
             this.label2.Text = "X";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.label2.Click += new System.EventHandler(this.ExitApp_Click);
             // 
             // label1
             // 
@@ -109,7 +109,7 @@ namespace Bankomat
             this.button1.TabIndex = 27;
             this.button1.Text = "Promeni";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.ChangePIN_Click);
             // 
             // pin2tb
             // 
@@ -137,7 +137,7 @@ namespace Bankomat
             this.label13.Size = new System.Drawing.Size(60, 24);
             this.label13.TabIndex = 41;
             this.label13.Text = "Nazad";
-            this.label13.Click += new System.EventHandler(this.label13_Click);
+            this.label13.Click += new System.EventHandler(this.BackToPreviousPage_Click);
             // 
             // panel2
             // 

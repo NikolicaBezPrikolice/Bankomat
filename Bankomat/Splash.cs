@@ -17,7 +17,7 @@ namespace Bankomat
             InitializeComponent();
         }
         int starting = 0;
-        private void timer1_Tick(object sender, EventArgs e)
+        private void Timer1_Tick(object sender, EventArgs e)
         {
             starting += 1;
             Myprogress.Value = starting;

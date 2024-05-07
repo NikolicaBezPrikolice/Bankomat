@@ -80,7 +80,7 @@ namespace Bankomat
             this.label2.Size = new System.Drawing.Size(35, 36);
             this.label2.TabIndex = 3;
             this.label2.Text = "X";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.label2.Click += new System.EventHandler(this.ExitApp_Click);
             // 
             // label1
             // 
@@ -271,7 +271,7 @@ namespace Bankomat
             this.educationcb.Name = "educationcb";
             this.educationcb.Size = new System.Drawing.Size(176, 32);
             this.educationcb.TabIndex = 34;
-            this.educationcb.SelectedIndexChanged += new System.EventHandler(this.educationcb_SelectedIndexChanged);
+            this.educationcb.SelectedIndexChanged += new System.EventHandler(this.Educationcb_SelectedIndexChanged);
             // 
             // dobdate
             // 
@@ -292,7 +292,7 @@ namespace Bankomat
             this.button1.TabIndex = 36;
             this.button1.Text = "Potvrdi";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.CreateAccount_Click);
             // 
             // panel2
             // 
@@ -313,7 +313,7 @@ namespace Bankomat
             this.label13.Size = new System.Drawing.Size(60, 24);
             this.label13.TabIndex = 38;
             this.label13.Text = "Nazad";
-            this.label13.Click += new System.EventHandler(this.label13_Click);
+            this.label13.Click += new System.EventHandler(this.BackToPreviousPage_Click);
             // 
             // label12
             // 

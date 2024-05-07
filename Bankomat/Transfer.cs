@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Bankomat
@@ -21,13 +16,13 @@ namespace Bankomat
         int currS;
         int currR;
         double rate;
-        private void addTransaction()
+        private void AddTransaction()
         {
             string TrType = "3";
             try
             {
                 Con.Open();
-                string query = "insert into TransactionTbl values('" + Login.AccNumber + "','" +receivertb.Text + "','" + TrType + "','" + amounttb.Text + "','" + DateTime.Now.ToString() + "')";
+                string query = "insert into TransactionTbl values('" + Login.AccNumber + "','" + receivertb.Text + "','" + TrType + "','" + amounttb.Text + "','" + DateTime.Now.ToString() + "')";
                 SqlCommand cmd = new SqlCommand(query, Con);
                 cmd.ExecuteNonQuery();
                 Con.Close();
@@ -39,10 +34,10 @@ namespace Bankomat
         }
         int oldbalanceR;
         int oldbalanceS;
-        string check="";
-        private void getbalance()
+        string check = "";
+        private void Getbalance()
         {
-            Con.Open();            
+            Con.Open();
             SqlDataAdapter sdaR = new SqlDataAdapter("select Balance from AccountTbl where AccNum='" + receivertb.Text + "'", Con);
             SqlDataAdapter sdaS = new SqlDataAdapter("select Balance from AccountTbl where AccNum='" + Login.AccNumber + "'", Con);
             DataTable dt = new DataTable();
@@ -60,17 +55,21 @@ namespace Bankomat
             }
             Con.Close();
         }
-        private void button1_Click(object sender, EventArgs e)
+        private void MakeTransfer_Click(object sender, EventArgs e)
         {
             printDocument1.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("receiptD", 600, 210);
-           
-            if (receivertb.Text == "" || amounttb.Text=="")
+
+            if (receivertb.Text == "" || amounttb.Text == "")
             {
                 MessageBox.Show("Popunite sva polja");
             }
+            else if(!int.TryParse(amounttb.Text, out int depositAmount) || depositAmount <= 0)
+            {
+                MessageBox.Show("Unesite validnu vrednost");
+            }
             else
             {
-                getbalance();
+                Getbalance();
 
                 if (check == "")
                 {
@@ -89,11 +88,18 @@ namespace Bankomat
                         DataTable dt = new DataTable();
                         sdaCR.Fill(dt);
                         currR = Convert.ToInt32(dt.Rows[0][0]);
-                        SqlDataAdapter sdaR = new SqlDataAdapter("select rate from ExchangeTbl where first='" + currS + "'and second='" + currR + "'", Con);
-                        sdaR.Fill(dt);
-                        rate = Convert.ToDouble(dt.Rows[1][1]);
+                        if (currR != currS)
+                        {
+                            SqlDataAdapter sdaR = new SqlDataAdapter("select rate from ExchangeTbl where first='" + currS + "' and second='" + currR + "'", Con);
+                            sdaR.Fill(dt);
+                            rate = Convert.ToDouble(dt.Rows[1][1]);
+                        }
+                        else
+                        {
+                            rate = 1;
+                        }
                         Con.Close();
-                        double newBalanceR = oldbalanceR + Convert.ToInt32(amounttb.Text) * rate;
+                        int newBalanceR = (int)(oldbalanceR + Convert.ToInt32(amounttb.Text) * rate);
                         int newBalanceS = oldbalanceS - Convert.ToInt32(amounttb.Text);
                         try
                         {
@@ -106,7 +112,7 @@ namespace Bankomat
                             cmd.ExecuteNonQuery();
                             MessageBox.Show("Uspesan Transfer");
                             Con.Close();
-                            addTransaction();
+                            AddTransaction();
                             Home home = new Home();
                             home.Show();
                             this.Close();
@@ -134,24 +140,19 @@ namespace Bankomat
             Con.Close();
         }
 
-        private void receivertb_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void label2_Click(object sender, EventArgs e)
+        private void ExitApp_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void label13_Click(object sender, EventArgs e)
+        private void ReturnToPreviousPage_Click(object sender, EventArgs e)
         {
             Home home = new Home();
             this.Close();
             home.Show();
         }
 
-        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        private void PrintDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
             e.Graphics.DrawString("Bankomat", new Font("Averia", 14, FontStyle.Bold), Brushes.Red, new Point(240, 20));
             e.Graphics.DrawString("Uplate i isplate sirom Srbije", new Font("Averia", 8, FontStyle.Italic), Brushes.DarkViolet, new Point(220, 40));

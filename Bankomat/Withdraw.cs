@@ -19,7 +19,7 @@ namespace Bankomat
             InitializeComponent();
         }
         SqlConnection Con = new SqlConnection(Connection.db);
-       private void addTransaction()
+       private void AddTransaction()
         {
             int TrType = 2;
             try
@@ -36,7 +36,7 @@ namespace Bankomat
             }
         }
       
-        private void getbalance()
+        private void GetBalance()
         {
             Con.Open();
             SqlDataAdapter sda = new SqlDataAdapter("select Balance from AccountTbl where AccNum='" + Login.AccNumber + "'", Con);
@@ -45,7 +45,7 @@ namespace Bankomat
             balancelbl.Text =dt.Rows[0][0].ToString();
             Con.Close();
         }
-        private void getcurrency()
+        private void GetCurrency()
         {
             Con.Open();
             SqlDataAdapter sda = new SqlDataAdapter("select CurrencyTbl.Currency from CurrencyTbl inner join AccountTbl on CurrencyTbl.Id=AccountTbl.Currency where AccNum='" + Login.AccNumber + "'", Con);
@@ -55,17 +55,7 @@ namespace Bankomat
             Con.Close();
         }
 
-        private void balancelbl_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void Withdraw_Click(object sender, EventArgs e)
         {
             printDocument1.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("receiptD", 600, 210);
            
@@ -73,7 +63,7 @@ namespace Bankomat
             {
                 MessageBox.Show("Unesite svotu");
             }
-            else if (Convert.ToInt32(wdamttb.Text) <= 0)
+            else if (!int.TryParse(wdamttb.Text, out int depositAmount) || depositAmount <= 0)
             {
                 MessageBox.Show("Unesite validnu vrednost");
             }
@@ -96,7 +86,7 @@ namespace Bankomat
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Uspesno ste podigli");
                     Con.Close();
-                    addTransaction();
+                    AddTransaction();
                     Home home = new Home();
                     home.Show();
                     this.Close();
@@ -110,8 +100,8 @@ namespace Bankomat
 
         private void Withdraw_Load(object sender, EventArgs e)
         {
-            getbalance();
-            getcurrency();
+            GetBalance();
+            GetCurrency();
             if(curr=="Evro" || curr=="Dolar")
             {
                 button7.Text = "5";
@@ -123,19 +113,19 @@ namespace Bankomat
             }
         }
 
-        private void label13_Click(object sender, EventArgs e)
+        private void BackToPreviousPage_Click(object sender, EventArgs e)
         {
             this.Close();
             Home home = new Home();
             home.Show();
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void ExitApp_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        private void PrintDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
             e.Graphics.DrawString("Bankomat", new Font("Averia", 14, FontStyle.Bold), Brushes.Red, new Point(240, 20));
             e.Graphics.DrawString("Uplate i isplate sirom Srbije", new Font("Averia", 8, FontStyle.Italic), Brushes.DarkViolet, new Point(220, 40));
@@ -153,33 +143,33 @@ namespace Bankomat
 
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void Withdraw1_Click(object sender, EventArgs e)
         {
 
             wdamttb.Text = button7.Text;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Withdraw2_Click(object sender, EventArgs e)
         {
             wdamttb.Text = button2.Text;
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void Withdraw3_Click(object sender, EventArgs e)
         {
             wdamttb.Text = button3.Text;
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void Withdraw4_Click(object sender, EventArgs e)
         {
             wdamttb.Text = button4.Text;
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void Withdraw5_Click(object sender, EventArgs e)
         {
             wdamttb.Text = button5.Text;
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void Withdraw6_Click(object sender, EventArgs e)
         {
             wdamttb.Text = button6.Text;
         }

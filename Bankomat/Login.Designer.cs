@@ -66,7 +66,7 @@ namespace Bankomat
             this.label6.Size = new System.Drawing.Size(35, 36);
             this.label6.TabIndex = 9;
             this.label6.Text = "X";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
+            this.label6.Click += new System.EventHandler(this.ExitApp_Click);
             // 
             // label1
             // 
@@ -149,7 +149,7 @@ namespace Bankomat
             this.button1.TabIndex = 7;
             this.button1.Text = "Uloguj se";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.Login_Click);
             // 
             // label5
             // 
@@ -161,7 +161,7 @@ namespace Bankomat
             this.label5.Size = new System.Drawing.Size(123, 24);
             this.label5.TabIndex = 8;
             this.label5.Text = "Napravi nalog";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
+            this.label5.Click += new System.EventHandler(this.MakeAccount_Click);
             // 
             // Login
             // 
